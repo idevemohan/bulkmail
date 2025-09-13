@@ -4,8 +4,25 @@ const nodemailer = require("nodemailer");
 const mongoose=require("mongoose")
 
 const app = express();
+const allowedOrigins = [
+  'https://bulkmail-frontendd.onrender.com',  // your frontend URL
+  // maybe also local dev e.g. 'http://localhost:3000'
+];
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: function(origin, callback) {
+    // allow requests with no origin (like mobile apps, or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  methods: ['GET', 'POST', 'OPTIONS'],  // whichever you use
+  allowedHeaders: ['Content-Type', 'Authorization'],  // add other custom headers if any
+  credentials: true   // if you are using cookies, auth etc.
+}));
 
 mongoose.connect("mongodb+srv://devemohan:4496@cluster0.aki5yoz.mongodb.net/passkey?retryWrites=true&w=majority&appName=Cluster0").then(function(){
     console.log("Connected to DB")

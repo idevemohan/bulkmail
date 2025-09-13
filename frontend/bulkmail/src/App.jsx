@@ -16,7 +16,7 @@ function App() {
   function send()
   {
     setStatus(true)
-     axios.post("http://127.0.0.1:3000/sendemail",{msg:msg,emailList:emailList})
+     axios.post("https://bulkmail-backend-r1jn.onrender.com",{msg:msg,emailList:emailList})
      .then(function(data)
     {
       if(data.data === true )

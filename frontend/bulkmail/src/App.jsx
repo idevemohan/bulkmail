@@ -55,7 +55,7 @@ function App() {
   return (
     <>
     <div className='bg-[url("./assets/bg6.jpg")] bg-cover h-screen w-screen bg-center overflow-hidden flex justify-center items-center text-white'>
-    <div className='mt-5 w-[800px] h-[600px] rounded-xl backdrop-brightness-50 flex flex-col  '>
+    <div className='mt-5 w-[600px] h-[500px] rounded-xl backdrop-brightness-50 flex flex-col  '>
          <h1 className='text-3xl font-bold text-center p-5 '>Bulk Confirmation Mail</h1>
          <h2 className='text-xl font-bold text-center mt-2'>Drag & Drop</h2>
          <div className='flex flex-col justify-center'>
